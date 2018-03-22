@@ -38,7 +38,6 @@ def get_liked_pages():
    mypages = get_all_pages(pages)
    return mypages
 
-
 def get_user_posts():
    myposts=[]
 
@@ -46,6 +45,30 @@ def get_user_posts():
    posts = graph.get_connections('me',connection_name='posts')
    #visit all pages
    myposts = get_all_pages(posts)
+   H1 = []
+   for n in range(150):
+       row = []
+       row.append(myposts[n]["id"])
+       row.append(myposts[n]["created_time"])
+       try:
+          row.append(myposts[n]["message"])
+       except KeyError:
+          #row.append(myposts[n]["message"])
+          row.append(" _Shared Story ")
+       H1.append(row)
+   for m in range(150):
+       for n in range(3):
+           print H1[m][n]
+       print "\n"
+       
+   for m in range(150):
+      post_ids = []
+      post_ids = H1[m][0]
+      post_created_time = []
+      post_created_time = H1[m][1]
+      post_message = []
+      post_message = H1[m][2]
+   
    return myposts
 
 
@@ -162,6 +185,9 @@ url = "https://graph.facebook.com/me?access_token=EAADDFenkkWMBAMBJgKl7ZBYPSP7Ay
 
 response = urllib.urlopen(url)
 uid = json.loads(response.read())
-#print uid
+print "User ID - ",uid
 
-user = get_user_details()
+print "User Details - "
+user_details = get_user_details()
+print "User Posts(150 limit)" - 
+user_posts_info = get_user_posts()
