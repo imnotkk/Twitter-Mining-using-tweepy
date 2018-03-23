@@ -189,5 +189,5 @@ print "User ID - ",uid
 
 print "User Details - "
 user_details = get_user_details()
-print "User Posts(150 limit)" - 
+print "User Posts(150 limit)"
 user_posts_info = get_user_posts()
